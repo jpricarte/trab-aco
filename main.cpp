@@ -17,10 +17,11 @@ vector<int>  node_degree{};
 vector<Edge> edges{};
 
 // ACO
-int bkv, nv_bkv, n_ants;
-double beta_val = 1;
-double alpha    = 0.9;
-double q0 = 0.9;
+int bkv, nv_bkv;
+int n_ants = 10;
+double beta_val = 1; // attractiveness power over pheromone
+double alpha = 0.9;  // evaporation rate of pheromone
+double q0 = 0.9;     // Define randomness of greedy
 double tau0;
 vector<int>  ant_position;
 vector<bool> ant_keep_moving;
@@ -31,8 +32,8 @@ int solution_value;
 
 void read_instance() {
     cin >> n >> m;
-    node_weight.reserve(n);
-    node_degree.reserve(n);
+    node_weight.resize(n);
+    node_degree.resize(n);
     int sum_w = 0;
     for (int i=0; i<n; i++) {
         cin >> node_weight[i];
@@ -52,12 +53,12 @@ void read_instance() {
 void initialize_values(vector<double>& tau_value, vector<set<int>>& solution_by_ant, vector<vector<int>>& c_value) {
     tau0 = double(n*(n-nv_bkv))/bkv;
 
-    ant_position.reserve(n_ants);
-    ant_keep_moving.reserve(n_ants);
-    solution_by_ant.reserve(n_ants);
+    ant_position.resize(n_ants);
+    ant_keep_moving.resize(n_ants);
+    solution_by_ant.resize(n_ants);
 
-    tau_value.reserve(n);
-    c_value.reserve(n_ants);
+    tau_value.resize(n);
+    c_value.resize(n_ants);
 
     for (int k = 0; k < n_ants; k++) {
         c_value[k] = vector<int>(n, 0);
@@ -234,10 +235,10 @@ int main(int argc, char* argv[]) {
     using std::chrono::milliseconds;
 
     if (argc != 5) {
-        cerr << "usage: ./aco ants num_v_bkv bkv instance_name < instance" << endl;
+        cerr << "usage: ./aco beta_val num_v_bkv bkv instance_name < instance" << endl;
         return -1;
     }
-    n_ants = stoi(argv[1]);
+    beta_val = stod(argv[1]);
     nv_bkv = stoi(argv[3]);
     bkv = stoi(argv[4]);
     string instance_name{argv[2]};
@@ -248,7 +249,7 @@ int main(int argc, char* argv[]) {
     auto t2 = high_resolution_clock::now();
     duration<double, std::milli> ms_double = t2 - t1;
     cout << instance_name
-         << "," << n_ants
+         << "," << beta_val
          << "," << solution_node.size()
          << "," << solution_value
          << "," << ms_double.count()

@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     if (argc != 4) {
-        cerr << "usage: ./runner ants instance_dir result_file" << endl;
+        cerr << "usage: ./runner beta_val instance_dir result_file" << endl;
     }
     fstream results{argv[3], fstream::in};
     if (results.is_open()) {

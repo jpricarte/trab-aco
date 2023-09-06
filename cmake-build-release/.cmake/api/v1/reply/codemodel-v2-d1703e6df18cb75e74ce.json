@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "aco",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "aco::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aco-Release-99291ea7a1c6d7abb30a.json",
+					"name" : "aco",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "graph-gen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-graph-gen-Release-1b5e19b5fcc8f7f712b9.json",
+					"name" : "graph-gen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "runner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-runner-Release-73e383310736806d9255.json",
+					"name" : "runner",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jpricarte/Documents/projects/aco/cmake-build-release",
+		"source" : "/home/jpricarte/Documents/projects/aco"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
